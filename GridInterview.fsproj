@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="%2a%2a\**" />
+    <Content Remove="Client\**" />
+    <EmbeddedResource Remove="%2a%2a\**" />
+    <EmbeddedResource Remove="Client\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="%2a%2a\%2a.config" />
+    <Content Remove="%2a%2a\%2a.cshtml" />
+    <Content Remove="%2a%2a\%2a.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Modules/MatrixModule.fs" />
+    <Compile Include="Controllers/MatrixController.fs" />
+    <Compile Include="Middlewares/CorsMiddleware.fs" />
+    <Compile Include="Startup.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>

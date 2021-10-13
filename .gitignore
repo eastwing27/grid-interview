@@ -1,0 +1,9 @@
+
+/.vs/*
+/bin/*
+.vscode/*
+/Client/.vscode/*
+/Client/grid-interview-client/node_modules/*
+/Client/grid-interview-client/build/*
+/obj/*
+/Client/node_modules/*

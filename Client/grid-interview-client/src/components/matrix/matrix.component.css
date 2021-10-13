@@ -1,0 +1,9 @@
+.matrix {
+  vertical-align: middle;
+}
+
+.matrix .board-row:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
