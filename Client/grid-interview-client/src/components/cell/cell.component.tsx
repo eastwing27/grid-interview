@@ -42,9 +42,9 @@ export class Cell extends React.Component<cellProps, cellState> {
     }
 
     render() {
-        const cellClass = this.props.filled ? "cell-filled" : "cell";
+        const cellClass = this.props.filled ? "filled" : "empty";
         return (
-            <button className={cellClass} onMouseEnter={this.getGroup} onClick={this.showCounter}>
+            <button className={`cell ${cellClass}`} onMouseEnter={this.getGroup} onClick={this.showCounter}>
                 {this.counter}
             </button>
         )

@@ -1,34 +1,26 @@
 .cell {
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 55px;
+    height: 55px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 55px;
+  }
+
+  .empty {
     background: rgba(148, 162, 241, 0.651);
-    border: 1px solid #999;
-    float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 55px;
-    height: 55px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 55px;
   }
 
-  .cell-filled {
+  .filled {
     background: rgb(53, 110, 184);
-    border: 1px solid #999;
-    float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 55px;
-    height: 55px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 55px;
   }
 
-  .cell-filled .counter {
+  .cell .counter {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 24px;
     font-weight: normal;
