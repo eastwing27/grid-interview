@@ -6,12 +6,15 @@ type cellProps = {
     filled: boolean,
     x: number,
     y: number,
-    onClick: () => void
+    onClick: () => void,
+    onMouseIn: (group: number[][]) => void,
+    onMouseOut: () => void
 }
 
 type cellState = {
     group: number[][],
-    showCounter: boolean
+    showCounter: boolean,
+    hovered: boolean
 }
 
 export class Cell extends React.Component<cellProps, cellState> {
@@ -21,17 +24,19 @@ export class Cell extends React.Component<cellProps, cellState> {
             : undefined;
     }
 
-    private getGroup = async () => {
-        if (!this.props.filled)
-            return;
+    private onMouseIn = async () => {
+        if (!this.props.filled)  return;
 
         const group = await matrixServise.getGroup(this.props.x, this.props.y);
         this.setState({group})
+            
+        this.props.onMouseIn(this.state.group);
     }
 
+    private onMouseOut = () => this.props.onMouseOut();
+
     private showCounter = () => {
-        if (!this.props.filled)
-            return;
+        if (!this.props.filled)  return;
 
         this.props.onClick();
         this.setState({showCounter: true})
@@ -42,9 +47,18 @@ export class Cell extends React.Component<cellProps, cellState> {
     }
 
     render() {
-        const cellClass = this.props.filled ? "filled" : "empty";
+        const cellClass = this.state?.hovered 
+            ? "hover" 
+            : this.props.filled 
+                ? "filled" 
+                : "empty";
         return (
-            <button className={`cell ${cellClass}`} onMouseEnter={this.getGroup} onClick={this.showCounter}>
+            <button 
+                className={`cell ${cellClass}`} 
+                onMouseEnter={this.onMouseIn} 
+                onMouseLeave={this.onMouseOut} 
+                onClick={this.showCounter}
+            >
                 {this.counter}
             </button>
         )

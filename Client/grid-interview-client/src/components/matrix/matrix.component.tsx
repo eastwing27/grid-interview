@@ -31,10 +31,29 @@ export class Matrix extends React.Component<matrixProps, matrixState> {
         this.state.cellRefs
             .flat()
             .forEach((ref: any) => ref.current.setState({showCounter: false}))
+
+    private onMouseInCell = (group: number[][]) => 
+       this.state.cellRefs
+            .flat()
+            .filter((ref: any) => group.some(cell => ref.current.props.x === cell[0] && ref.current.props.y === cell[1]))
+            .forEach((ref: any) => ref.current.setState({hovered: true}));
     
+    private onMouseOutCell = () => 
+        this.state.cellRefs
+            .flat()
+            .forEach((ref: any) => ref.current.setState({hovered: false}));
 
     private renderCell = (isFilled: boolean, x: number, y: number) => 
-        <Cell filled={isFilled} x={x} y={y} onClick={this.onCellClick} ref={this.state.cellRefs[x][y]} key={`${x}${y}`}/>;
+        <Cell 
+            filled={isFilled} 
+            x={x} 
+            y={y} 
+            onClick={this.onCellClick} 
+            onMouseIn={this.onMouseInCell}
+            onMouseOut={this.onMouseOutCell}
+            ref={this.state.cellRefs[x][y]} 
+            key={`${x}${y}`}
+        />;
 
     private renderRow = (x: number, row: number[]) =>
         (row.map((cell, y) => this.renderCell(cell !== 0, x, y)));

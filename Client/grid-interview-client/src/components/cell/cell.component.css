@@ -18,6 +18,13 @@
 
   .filled {
     background: rgb(53, 110, 184);
+    transition: background .35s;
+
+  }
+
+  .hover {
+    background: rgb(27, 50, 71);
+    transition: background .35s;
   }
 
   .cell .counter {
